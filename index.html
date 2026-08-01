@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saga Telecom — An Engineering & Supply-Chain-First Telecom Partner</title>
+<style>
+  :root{
+    --ink:#1a1a18;
+    --paper:#f1efe9;
+    --paper-deep:#e8e4da;
+    --rule:#1a1a18;
+    --rule-light:#b9b3a4;
+    --accent:#8a2e1f;
+    --accent-dim:#b5573f;
+    --green-ok:#2f4d2a;
+    --mono:"Courier New", Courier, monospace;
+    --serif:"Times New Roman", Times, serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--serif);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+    font-size:17px;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+  /* PAGE SWITCHING */
+  .page{display:none;}
+  .page.active{display:block;}
+
+  /* ============ TOP STRIP ============ */
+  .topstrip{
+    background:var(--ink); color:var(--paper);
+    font-family:var(--mono); font-size:12px; letter-spacing:0.06em;
+    padding:6px 0;
+  }
+  .topstrip .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .topstrip span{opacity:0.75;}
+
+  /* ============ HEADER ============ */
+  header{
+    border-bottom:3px double var(--rule);
+    background:var(--paper);
+    position:sticky; top:0; z-index:50;
+  }
+  .headbar{display:flex; justify-content:space-between; align-items:flex-end; padding:22px 0 14px;}
+  .brandmark{display:flex; align-items:center; gap:14px; cursor:pointer; text-decoration:none; background:none; border:none; padding:0;}
+  .brandmark .mark{
+    width:40px; height:40px; border:2px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-weight:bold; font-size:15px; flex-shrink:0;
+  }
+  .brandmark h1{font-size:26px; font-weight:700; letter-spacing:0.01em; font-family:"Times New Roman", Times, serif;}
+  .brandmark .tagline{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.08em;
+    color:#555; text-transform:uppercase; margin-top:2px;
+  }
+  nav ul{list-style:none; display:flex; gap:28px; font-size:14px; font-family:var(--mono); letter-spacing:0.03em;}
+  nav button.navlink{
+    background:none; border:none; cursor:pointer;
+    font-family:var(--mono); font-size:14px; letter-spacing:0.03em; color:var(--ink);
+    border-bottom:1px solid transparent; padding-bottom:3px;
+    transition:border-color .15s;
+  }
+  nav button.navlink:hover, nav button.navlink:focus-visible{border-color:var(--accent); outline:none;}
+  nav button.navlink.current{border-color:var(--ink);}
+
+  /* ============ BREADCRUMB ============ */
+  .breadcrumb{
+    font-family:var(--mono); font-size:12px; color:#666;
+    padding:14px 0; border-bottom:1px solid var(--rule-light);
+  }
+  .breadcrumb button{
+    background:none; border:none; cursor:pointer; padding:0;
+    font-family:var(--mono); font-size:12px; color:var(--accent);
+  }
+  .breadcrumb button:hover{text-decoration:underline;}
+
+  /* ============ HERO ============ */
+  .hero{border-bottom:1px solid var(--rule); padding:72px 0 64px; position:relative;}
+  .hero-grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:64px; align-items:center;}
+  .hero-eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:20px; display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before{content:""; width:26px; height:1px; background:var(--accent); display:inline-block;}
+  .hero h2{font-size:52px; line-height:1.06; font-weight:700; letter-spacing:-0.01em; margin-bottom:26px;}
+  .hero h2 em{font-style:italic; color:var(--accent);}
+  .hero p.lede{font-size:18px; line-height:1.65; color:#3a3a36; max-width:58ch; margin-bottom:32px;}
+  .hero-cta{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.04em; text-decoration:none;
+    padding:13px 24px; display:inline-block; border:1.5px solid var(--ink);
+    transition:background .15s, color .15s; cursor:pointer; background:none; color:var(--ink);
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-solid:hover{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+  .btn-outline:hover{background:var(--ink); color:var(--paper);}
+
+  /* ============ IDENTITY PANEL ============ */
+  .identity-panel{border:1.5px solid var(--ink); background:var(--paper-deep); padding:30px 26px;}
+  .identity-panel .panel-label{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.1em;
+    color:#555; border-bottom:1px solid var(--rule-light); padding-bottom:10px; margin-bottom:18px;
+  }
+  .id-line{padding:10px 0; border-bottom:1px dotted var(--rule-light); font-size:14px; line-height:1.5;}
+  .id-line:last-child{border-bottom:none;}
+  .id-line .id-key{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.07em; color:#888; display:block; margin-bottom:3px;}
+  .id-line .id-val{font-weight:700;}
+
+  /* ============ SECTION ============ */
+  .section{padding:64px 0; border-bottom:1px solid var(--rule);}
+  .section.tight{padding:48px 0;}
+  .section.no-border{border-bottom:none;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:36px; gap:24px; flex-wrap:wrap;}
+  .section-tag{font-family:var(--mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px;}
+  .section-head h3{font-size:32px; font-weight:700; letter-spacing:-0.01em;}
+  .section-head .section-note{font-size:14px; color:#555; max-width:40ch; text-align:right;}
+  .lead-text{font-size:17px; color:#3a3a36; max-width:72ch; line-height:1.65; margin-bottom:8px;}
+
+  /* ============ THREE PILLARS ============ */
+  .pillars-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:0; border:1.5px solid var(--ink);}
+  .pillar{padding:36px 30px; position:relative;}
+  .pillar + .pillar{border-left:1.5px solid var(--ink);}
+  .pillar-num{font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;}
+  .pillar h4{font-size:22px; font-weight:700; margin-bottom:12px; line-height:1.2;}
+  .pillar p{font-size:14px; color:#444; line-height:1.6;}
+  .pillar-rule{width:32px; height:2px; background:var(--accent); margin-bottom:16px;}
+
+  /* ============ NARRATIVE ============ */
+  .narrative{max-width:72ch;}
+  .narrative p{font-size:17px; color:#3a3a36; line-height:1.75; margin-bottom:20px;}
+  .narrative p:last-child{margin-bottom:0;}
+  .pull-quote{
+    border-left:3px solid var(--accent); padding-left:24px; margin:36px 0;
+    font-size:20px; line-height:1.5; color:var(--ink); font-style:italic; max-width:60ch;
+  }
+
+  /* ============ CLIENT TYPES ============ */
+  .clients-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:0; border:1.5px solid var(--ink);}
+  .client-card{padding:28px 28px; border-bottom:1px solid var(--rule-light); border-right:1px solid var(--rule-light);}
+  .client-card:nth-child(2n){border-right:none;}
+  .client-card:nth-last-child(-n+2){border-bottom:none;}
+  .client-card .ct-priority{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:10px;}
+  .client-card h5{font-size:18px; font-weight:700; margin-bottom:10px;}
+  .client-card p{font-size:13.8px; color:#444; line-height:1.6;}
+
+  /* ============ KEYWORD GRID ============ */
+  .keyword-wrap{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;}
+  .kw{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.06em;
+    border:1px solid var(--rule-light); padding:7px 14px; color:#555;
+  }
+
+  /* ============ WHAT WE DON'T DO ============ */
+  .boundary-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .boundary-col h5{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:#888; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--rule-light);}
+  .dash-list{list-style:none;}
+  .dash-list li{font-size:15px; padding:7px 0 7px 22px; position:relative; border-bottom:1px dotted var(--rule-light);}
+  .dash-list li:last-child{border-bottom:none;}
+  .dash-list li::before{content:"—"; position:absolute; left:0; top:7px; color:var(--accent); font-weight:bold;}
+  .dash-list.dim li::before{color:#999;}
+  .dash-list.dim li{color:#888;}
+
+  /* ============ CHIPSET BLOCK ============ */
+  .chipset-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1.5px solid var(--ink); margin-top:32px; align-items:stretch;}
+  .chipset-card{padding:30px 28px; display:flex; flex-direction:column;}
+  .chipset-card + .chipset-card{border-left:1.5px solid var(--ink);}
+  .chipset-card .cc-badge{font-family:var(--mono); font-size:11px; color:#555; letter-spacing:0.07em; text-transform:uppercase; margin-bottom:8px;}
+  .chipset-card h4{font-size:20px; font-weight:700; margin-bottom:8px;}
+  .chipset-card .cc-sub{font-size:14px; color:#666; font-style:italic; margin-bottom:18px;}
+  .chipset-card ul{list-style:none; flex:1;}
+  .chipset-card li{font-size:14px; padding:8px 0 8px 18px; position:relative; border-bottom:1px dotted var(--rule-light); color:#444; min-height:40px; display:flex; align-items:center;}
+  .chipset-card li:last-child{border-bottom:none;}
+  .chipset-card li::before{content:"—"; position:absolute; left:0; top:50%; transform:translateY(-50%); color:var(--accent);}
+  .chipset-card.secondary{background:#e9e6df;}
+  .chipset-card.secondary li::before{color:var(--accent);}
+
+  /* ============ CONTACT PAGE ============ */
+  .contact-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start;}
+  .spec-line{display:flex; justify-content:space-between; font-size:14px; padding:9px 0; border-bottom:1px dotted var(--rule-light); gap:12px;}
+  .spec-line:last-child{border-bottom:none;}
+  .spec-line dt{color:#555;}
+  .spec-line dd{font-family:var(--mono); font-weight:bold; text-align:right;}
+  .contact-panel{border:1.5px solid var(--ink); background:var(--paper-deep); padding:28px 26px;}
+  .contact-panel .panel-label{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:#555; border-bottom:1px solid var(--rule-light); padding-bottom:10px; margin-bottom:16px;}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--ink); color:var(--paper); padding:48px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:36px; margin-bottom:36px;}
+  footer h6{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:#a89c8a; margin-bottom:14px;}
+  footer ul{list-style:none; font-size:13.5px;}
+  footer li{padding:5px 0; opacity:0.85;}
+  footer button{background:none; border:none; cursor:pointer; padding:0; color:inherit; font-family:var(--serif); font-size:13.5px; text-align:left;}
+  footer button:hover{text-decoration:underline;}
+  .footer-brand p{font-size:14px; color:#cfc8ba; line-height:1.9; white-space:nowrap;}
+  .footer-bottom{
+    border-top:1px solid #444038; padding-top:18px; display:flex; justify-content:space-between;
+    font-family:var(--mono); font-size:11.5px; color:#a89c8a; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h2{font-size:36px;}
+    .pillars-grid{grid-template-columns:1fr;}
+    .pillar + .pillar{border-left:none; border-top:1.5px solid var(--ink);}
+    .clients-grid{grid-template-columns:1fr;}
+    .client-card{border-right:none !important;}
+    .client-card:nth-last-child(-n+2){border-bottom:1px solid var(--rule-light);}
+    .client-card:last-child{border-bottom:none;}
+    .chipset-grid{grid-template-columns:1fr;}
+    .chipset-card + .chipset-card{border-left:none; border-top:1.5px solid var(--ink);}
+    .boundary-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .headbar{flex-direction:column; align-items:flex-start; gap:12px; padding-bottom:16px;}
+    nav ul{flex-wrap:wrap; gap:10px 18px;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:540px){
+    .footer-grid{grid-template-columns:1fr;}
+    .wrap{padding:0 20px;}
+    .hero{padding:48px 0 40px;}
+  }
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <span>AN ENGINEERING &amp; SUPPLY-CHAIN-FIRST TELECOM PARTNER</span>
+    <span>SHENZHEN, CHINA &nbsp;&middot;&nbsp; sagatele.com</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap headbar">
+    <button class="brandmark" onclick="gotoPage('home')">
+      <div class="mark">ST</div>
+      <div style="text-align:left;">
+        <h1>Saga Telecom</h1>
+        <div class="tagline">Engineering &amp; Supply-Chain-First</div>
+      </div>
+    </button>
+    <nav>
+      <ul>
+        <li><button class="navlink current" data-page="home" onclick="gotoPage('home')">Home</button></li>
+        <li><button class="navlink" data-page="about" onclick="gotoPage('about')">About</button></li>
+        <li><button class="navlink" data-page="capabilities" onclick="gotoPage('capabilities')">Capabilities</button></li>
+        <li><button class="navlink" data-page="contact" onclick="gotoPage('contact')">Contact</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- =========================================================
+     PAGE: HOME
+========================================================= -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-eyebrow">Saga Telecom</div>
+        <h2>Built to <em>engineer</em>,<br>not just to sell.</h2>
+        <p class="lede">We keep optimizing Marvell and CENTEC based feature sets, secure chip inventory, and deliver deep customization to clients who need a partner — not another vendor.</p>
+        <div class="hero-cta">
+          <button class="btn btn-solid" onclick="gotoPage('capabilities')">Our Capabilities</button>
+          <button class="btn btn-outline" onclick="gotoPage('about')">Our Story</button>
+        </div>
+      </div>
+      <div class="identity-panel">
+        <div class="panel-label">Saga Telecom — At a Glance</div>
+        <div class="id-line">
+          <span class="id-key">Positioning</span>
+          <span class="id-val">An Engineering &amp; Supply-Chain-First Telecom Partner</span>
+        </div>
+        <div class="id-line">
+          <span class="id-key">Chipset Platforms</span>
+          <span class="id-val">Marvell &middot; CENTEC &middot; Realtek</span>
+        </div>
+        <div class="id-line">
+          <span class="id-key">Customization</span>
+          <span class="id-val">OEM / ODM / SKD / CKD</span>
+        </div>
+        <div class="id-line">
+          <span class="id-key">Supply Model</span>
+          <span class="id-val">Strategic Inventory &middot; Fast Lead Time</span>
+        </div>
+        <div class="id-line">
+          <span class="id-key">Certifications</span>
+          <span class="id-val">CE &middot; FCC &middot; RoHS &middot; REACH &middot; UKCA</span>
+        </div>
+        <div class="id-line">
+          <span class="id-key">Base</span>
+          <span class="id-val">Shenzhen, China</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE PILLARS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Three Value Pillars</div>
+          <h3>What makes long-term partnership possible.</h3>
+        </div>
+        <p class="section-note">These three commitments are how Saga earns its place as a telecom partner, not just a supplier.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="pillar-num">01 — Architectural Stability</div>
+          <div class="pillar-rule"></div>
+          <h4>One platform, one roadmap.</h4>
+          <p>We commit to Marvell and CENTEC architectures and go deep — not broad. That means your product roadmap has a stable technical foundation underneath it, and the feature sets we support today will still be supported as your network evolves.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02 — Continuous Supply</div>
+          <div class="pillar-rule"></div>
+          <h4>Chip inventory, held on purpose.</h4>
+          <p>We maintain strategic buffer stock on key chipsets. When global allocation tightens, our clients don't scramble. Low-friction ordering, predictable lead times, and no surprises at the worst possible moment.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03 — Lifecycle Continuity</div>
+          <div class="pillar-rule"></div>
+          <h4>Products that age well together.</h4>
+          <p>A consistent chipset strategy means hardware, firmware, and software stay coherent across your product generations. You're not requalifying a new platform every two years. That coherence is a real cost saving that compounds over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE WORK WITH -->
+  <section class="section tight">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Who We Work With</div>
+          <h3>The right fit is specific.</h3>
+        </div>
+        <p class="section-note">We work best with clients who value engineering depth over lowest unit price.</p>
+      </div>
+      <div class="clients-grid">
+        <div class="client-card">
+          <div class="ct-priority">Primary — OEM / ODM / SKD / CKD</div>
+          <h5>Brand Owners &amp; Solution Builders</h5>
+          <p>If you need hardware that carries your brand, with firmware and management UI customized to your specification, this is where Saga operates most distinctly. Deep customization is our structural advantage — many Shenzhen suppliers can't do it; large OEMs won't bother for your volumes.</p>
+        </div>
+        <div class="client-card">
+          <div class="ct-priority">Primary — Marvell Ecosystem Clients</div>
+          <h5>L2+ Access Layer Specialists</h5>
+          <p>Organizations already in the Marvell or CENTEC ecosystem — or evaluating it — who need a partner that understands the architecture at the chip level, not just the product brochure. Feature set optimization and technical pre-sales are core to what we do.</p>
+        </div>
+        <div class="client-card">
+          <div class="ct-priority">Secondary — SIs / ISPs / Telcos</div>
+          <h5>Performance-to-Cost Buyers</h5>
+          <p>System integrators, ISPs, and smaller telcos who have been buying from Taiwanese alternatives and are open to a higher-ROI option — without moving down in quality. We position against Taiwanese brands on performance parity, not against bottom-tier price.</p>
+        </div>
+        <div class="client-card">
+          <div class="ct-priority">Secondary — Distributors &amp; E-Commerce</div>
+          <h5>Standard Product Buyers</h5>
+          <p>Distributors and online retailers who need reliable standard-SKU inventory with consistent supply. Fast lead times and available stock are the baseline; OEM options are on the table if volumes justify.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGE -->
+  <section class="section tight no-border">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">How We Describe Ourselves</div>
+          <h3>The words we actually use.</h3>
+        </div>
+      </div>
+      <div class="keyword-wrap">
+        <span class="kw">engineering-driven</span>
+        <span class="kw">supply-chain-first</span>
+        <span class="kw">architectural stability</span>
+        <span class="kw">lifecycle continuity</span>
+        <span class="kw">strategic inventory</span>
+        <span class="kw">low-friction deployment</span>
+        <span class="kw">predictable delivery</span>
+        <span class="kw">deep customization</span>
+        <span class="kw">Marvell ecosystem</span>
+        <span class="kw">CENTEC core layer</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- =========================================================
+     PAGE: ABOUT
+========================================================= -->
+<div class="page" id="page-about">
+  <div class="breadcrumb"><div class="wrap"><button onclick="gotoPage('home')">Home</button> / About</div></div>
+
+  <section class="hero" style="padding:64px 0 56px;">
+    <div class="wrap">
+      <div class="hero-eyebrow">Our Story</div>
+      <h2 style="font-size:44px; max-width:18ch;">Why <em>engineering first</em> is a business model, not a slogan.</h2>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div style="display:grid; grid-template-columns:1fr 360px; gap:72px; align-items:start;">
+        <div class="narrative">
+          <p>Most telecom hardware companies start with a product catalogue and work backwards to a story. Saga started differently: with a thesis about what clients in this market actually need, and why most vendors aren't able to deliver it.</p>
+
+          <p>The thesis is straightforward. Enterprise and carrier-edge switch buyers don't just need a box that passes traffic. They need a platform they can build on — firmware they can customize, a supply chain they can rely on when allocation gets tight, and a technical relationship that doesn't reset every time they launch a new product generation.</p>
+
+          <div class="pull-quote">"We're not a marketing-driven company. We put resources into engineering and inventory because that's where we actually create value for clients."</div>
+
+          <p>That means we focus on two chipset ecosystems — Marvell Prestera for access-layer switching, CENTEC for aggregation, core, and data center — and we go deep on both. We optimize feature sets continuously. We hold strategic buffer stock on key chipsets. We do firmware and management UI customization at a depth most suppliers won't touch.</p>
+
+          <p>The trade-off is transparency: we don't compete on every deal, and we're not the right partner for every buyer. We work best with clients who are optimizing for total cost of deployment, architectural consistency, and long-term supply predictability — not whoever quotes the lowest unit price this quarter.</p>
+
+          <p>Saga is based in Shenzhen. We work with OEM and ODM clients, system integrators, ISPs, and distributors across global markets. Our relationships are built to last, and we take the long view on every account we pursue.</p>
+        </div>
+        <div>
+          <div class="identity-panel">
+            <div class="panel-label">Company Profile</div>
+            <div class="id-line">
+              <span class="id-key">Base</span>
+              <span class="id-val">Shenzhen, China</span>
+            </div>
+            <div class="id-line">
+              <span class="id-key">Business Model</span>
+              <span class="id-val">Engineering-led trade &amp; customization</span>
+            </div>
+            <div class="id-line">
+              <span class="id-key">Chipset Focus</span>
+              <span class="id-val">Marvell &middot; CENTEC &middot; Realtek</span>
+            </div>
+            <div class="id-line">
+              <span class="id-key">Customization Depth</span>
+              <span class="id-val">Hardware &middot; Firmware &middot; Management UI</span>
+            </div>
+            <div class="id-line">
+              <span class="id-key">Supply Model</span>
+              <span class="id-val">Strategic buffer stock</span>
+            </div>
+            <div class="id-line">
+              <span class="id-key">Target Segments</span>
+              <span class="id-val">OEM / ODM &middot; SIs &middot; ISPs &middot; Distributors</span>
+            </div>
+            <div class="id-line">
+              <span class="id-key">Certifications</span>
+              <span class="id-val">CE &middot; FCC &middot; RoHS &middot; REACH &middot; UKCA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO AND DON'T -->
+  <section class="section tight">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Scope</div>
+          <h3>What we do — and what we don't.</h3>
+        </div>
+        <p class="section-note">Clarity about scope saves everyone's time, including ours.</p>
+      </div>
+      <div class="boundary-grid">
+        <div class="boundary-col">
+          <h5>We Do</h5>
+          <ul class="dash-list">
+            <li>Access-layer switching — Marvell Prestera (L2+)</li>
+            <li>Aggregation / core / data center — CENTEC (L3, 10G–800G)</li>
+            <li>PoE / PoE+ / PoE++ commercial &amp; industrial</li>
+            <li>OEM, ODM, SKD, CKD customization</li>
+            <li>Deep firmware &amp; management UI customization</li>
+            <li>Strategic chip inventory management</li>
+            <li>CE &middot; FCC &middot; RoHS &middot; REACH &middot; UKCA certified products</li>
+            <li>Long-term technical pre- and post-sales support</li>
+          </ul>
+        </div>
+        <div class="boundary-col">
+          <h5>We Don't</h5>
+          <ul class="dash-list dim">
+            <li>Cloud-managed switching platforms</li>
+            <li>Rail / transit certified switches (EN50155 etc.)</li>
+            <li>IP67 ruggedized enclosures</li>
+            <li>Consumer / home routers</li>
+            <li>UL certification (available on request for specific projects)</li>
+            <li>Country-specific mandatory certifications as standard (available on request, KC, etc.)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- =========================================================
+     PAGE: CAPABILITIES
+========================================================= -->
+<div class="page" id="page-capabilities">
+  <div class="breadcrumb"><div class="wrap"><button onclick="gotoPage('home')">Home</button> / Capabilities</div></div>
+
+  <section class="hero" style="padding:64px 0 56px;">
+    <div class="wrap">
+      <div class="hero-eyebrow">Capabilities</div>
+      <h2 style="font-size:44px; max-width:20ch;">Chipset expertise, supply-chain depth, and customization at scale.</h2>
+    </div>
+  </section>
+
+  <!-- CHIPSET PLATFORMS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Chipset Platforms</div>
+          <h3>Two ecosystems. One commitment.</h3>
+        </div>
+        <p class="section-note">We go deep on Marvell and CENTEC — not broad across every available silicon.</p>
+      </div>
+      <p class="lead-text">Our product and engineering focus is concentrated on two chipset families. That concentration is intentional: it's what allows us to optimize feature sets continuously, hold meaningful inventory positions, and provide technical support that goes beyond datasheet reading.</p>
+      <div class="chipset-grid">
+        <div class="chipset-card">
+          <div class="cc-badge">Primary Platform — Access Layer</div>
+          <h4>Marvell Prestera</h4>
+          <div class="cc-sub">AC5 Lite &middot; AC5 &middot; AC5+ — L2+ Managed Switching</div>
+          <ul>
+            <li>Commercial &amp; industrial grade — both deployment contexts covered</li>
+            <li>8 / 16 / 24 / 48-port configurations &middot; PoE / PoE+ / PoE++ (IEEE 802.3af/at/bt, up to 90W/port)</li>
+            <li>Dual PSU support &middot; hot-swappable power modules — zero downtime on power failure</li>
+            <li>ERPS G.8032 ring protection — sub-20ms convergence &middot; STP / RSTP / MSTP</li>
+            <li>QinQ double-tagging (port / VLAN / flow-based) &middot; Private VLAN &middot; Voice VLAN</li>
+            <li>IGMP v1/v2/v3 snooping &middot; PIM-SM multicast &middot; MLD snooping &middot; Fast Leave</li>
+            <li>802.1X + RADIUS + TACACS+ &middot; DAI &middot; IP Source Guard &middot; DDoS protection</li>
+            <li>SFTP / SCP / SSH2 (public key) &middot; HTTPS &middot; SNMP v2c/v3 &middot; sFlow &middot; MQTT telemetry</li>
+            <li>Dual firmware partition &middot; optical DDM monitoring &middot; one-click fault collection</li>
+            <li>Firmware actively developed — V7.5.x roadmap, continuous feature optimization</li>
+          </ul>
+        </div>
+        <div class="chipset-card secondary">
+          <div class="cc-badge">Primary Platform — Aggregation / Core / Data Center</div>
+          <h4>CENTEC</h4>
+          <div class="cc-sub">L3 Aggregation &middot; Core &middot; Data Center — 10G to 800G</div>
+          <ul>
+            <li>Full L3 hardware-forwarded routing — OSPF, BGP, static routing</li>
+            <li>VXLAN overlay networking — data center fabric support</li>
+            <li>MPLS — label switching and traffic engineering</li>
+            <li>MLAG — two-active stacking, cross-chassis link aggregation</li>
+            <li>ACL &middot; QoS &middot; LACP hardware offload at line rate</li>
+            <li>Port speeds: 10G SFP+ &middot; 25G SFP28 &middot; 40G QSFP+ &middot; 100G QSFP28 &middot; 400G QSFP112 &middot; 800G OSFP</li>
+            <li>Redundant power (CRPS) &middot; hot-swap smart fan modules</li>
+            <li>Suitable for enterprise aggregation, campus core, MAN, and data center ToR/spine</li>
+            <li>Active platform development — strong R&amp;D continuity</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:20px; padding:16px 20px; border:1px solid var(--rule-light); background:var(--paper-deep);">
+        <p style="font-family:var(--mono); font-size:12px; color:#666;">Realtek-based products also available as secondary line — primarily for price-sensitive buyers or supplementary SKU coverage. Suitable for standard L2 requirements where advanced feature depth is not the primary requirement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMIZATION -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Customization</div>
+          <h3>Deep customization is the differentiator.</h3>
+        </div>
+        <p class="section-note">Most suppliers offer label changes. We offer architecture changes.</p>
+      </div>
+      <p class="lead-text">The customization capability that matters most to serious OEM and ODM clients isn't cosmetic. It's the ability to modify firmware behavior, reshape management interfaces, and tune hardware configurations — at a depth that most Shenzhen-based suppliers either can't do or won't prioritize for mid-volume orders.</p>
+      <div style="margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1.5px solid var(--ink);">
+        <div style="padding:28px 24px; border-right:1.5px solid var(--ink);">
+          <div class="section-tag" style="margin-bottom:10px;">Hardware</div>
+          <ul class="dash-list">
+            <li>OEM branding and enclosure customization</li>
+            <li>Port count and configuration adjustment</li>
+            <li>PoE budget configuration</li>
+            <li>ODM / SKD / CKD production models</li>
+          </ul>
+        </div>
+        <div style="padding:28px 24px; border-right:1.5px solid var(--ink);">
+          <div class="section-tag" style="margin-bottom:10px;">Firmware</div>
+          <ul class="dash-list">
+            <li>Feature set activation and tuning</li>
+            <li>CLI behavior customization</li>
+            <li>MIB and SNMP configuration</li>
+            <li>Firmware version management and roadmap</li>
+          </ul>
+        </div>
+        <div style="padding:28px 24px;">
+          <div class="section-tag" style="margin-bottom:10px;">Management UI</div>
+          <ul class="dash-list">
+            <li>Web UI white-labeling</li>
+            <li>Interface language and UX customization</li>
+            <li>Menu structure and feature exposure control</li>
+            <li>Branded dashboard and help content</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPLY CHAIN -->
+  <section class="section tight no-border">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Supply Chain</div>
+          <h3>We manage uncertainty so you don't have to.</h3>
+        </div>
+      </div>
+      <p class="lead-text" style="margin-bottom:36px;">Strategic inventory isn't a cost center for us — it's a client value proposition. When chipset allocation tightens, our clients ship on schedule while others wait months. That reliability has a real dollar value that unit price comparisons don't capture.</p>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:0; border:1.5px solid var(--ink);">
+        <div style="padding:28px 26px; border-right:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink);">
+          <div class="section-tag" style="margin-bottom:8px;">Strategic Inventory</div>
+          <p style="font-size:14.5px; color:#444; line-height:1.6;">Buffer stock held against key Marvell and CENTEC chipsets. Not speculative — planned against client demand forecasts and lifecycle position of each platform.</p>
+        </div>
+        <div style="padding:28px 26px; border-bottom:1.5px solid var(--ink);">
+          <div class="section-tag" style="margin-bottom:8px;">Lifecycle Planning</div>
+          <p style="font-size:14.5px; color:#444; line-height:1.6;">We track chipset lifecycle status actively. Clients are informed well ahead of EOL transitions so product roadmaps can be adjusted without emergency re-spins.</p>
+        </div>
+        <div style="padding:28px 26px; border-right:1.5px solid var(--ink);">
+          <div class="section-tag" style="margin-bottom:8px;">Fast Lead Time</div>
+          <p style="font-size:14.5px; color:#444; line-height:1.6;">Inventory on hand means orders move quickly. For standard configurations, typical lead times are materially shorter than going direct to factory without buffer stock in place.</p>
+        </div>
+        <div style="padding:28px 26px;">
+          <div class="section-tag" style="margin-bottom:8px;">Shortage Risk Mitigation</div>
+          <p style="font-size:14.5px; color:#444; line-height:1.6;">Global chip shortages hit unprepared supply chains hard. Our inventory position is the hedge against that — built deliberately over time, not scrambled for at spot-market prices.</p>
+        </div>
+      </div>
+      <div style="margin-top:36px;">
+        <button class="btn btn-solid" onclick="gotoPage('contact')">Discuss your supply requirements →</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- =========================================================
+     PAGE: CONTACT
+========================================================= -->
+<div class="page" id="page-contact">
+  <div class="breadcrumb"><div class="wrap"><button onclick="gotoPage('home')">Home</button> / Contact</div></div>
+
+  <section class="section no-border" style="padding-top:64px;">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="section-tag">Get In Touch</div>
+        <h3 style="font-size:36px; font-weight:700; margin-bottom:20px; letter-spacing:-0.01em;">Talk to us about your project.</h3>
+        <p class="lead-text" style="margin-bottom:28px;">We work directly with OEMs, system integrators, ISPs, and distributors. If you're evaluating a platform, planning a customization, or want to understand whether our supply chain model fits your procurement requirements — this is the right conversation to have early.</p>
+
+        <p style="font-family:var(--mono); font-size:13px; color:#555; margin-bottom:20px; text-transform:uppercase; letter-spacing:0.06em;">Good topics to bring to a first conversation:</p>
+        <ul class="dash-list" style="margin-bottom:40px; max-width:56ch;">
+          <li>OEM / ODM customization scope and volumes</li>
+          <li>Platform recommendation for your access or aggregation topology</li>
+          <li>Feature set confirmation for a specific firmware capability</li>
+          <li>Supply chain planning and lead time requirements</li>
+          <li>Evaluation against existing Taiwanese or domestic alternatives</li>
+        </ul>
+        <p style="font-size:14px; color:#666; font-style:italic;">Typical response within one business day. We don't use contact forms — direct email gets a faster, more useful reply.</p>
+      </div>
+      <div>
+        <div class="contact-panel">
+          <div class="panel-label">Saga Telecom — Contact</div>
+          <dl>
+            <div class="spec-line"><dt>Website</dt><dd>sagatele.com</dd></div>
+            <div class="spec-line"><dt>Email</dt><dd>sales@sagatele.com</dd></div>
+            <div class="spec-line"><dt>Location</dt><dd>Shenzhen, China</dd></div>
+            <div class="spec-line"><dt>Response</dt><dd>Within 1 business day</dd></div>
+          </dl>
+        </div>
+
+        <div style="margin-top:24px; padding:20px 22px; border:1px solid var(--rule-light); background:var(--paper-deep);">
+          <p style="font-family:var(--mono); font-size:11.5px; color:#666; line-height:1.6;">We take the long view on client relationships. If the timing isn't right, we'd rather stay in contact than push for a transaction that doesn't fit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h6>Saga Telecom</h6>
+        <p>An Engineering &amp; Supply-Chain-First telecom partner.</p>
+        <p>Marvell Prestera and CENTEC switching platforms.</p>
+        <p>Deep customization, strategic inventory.</p>
+      </div>
+      <div>
+        <h6>Navigate</h6>
+        <ul>
+          <li><button onclick="gotoPage('home')">Home</button></li>
+          <li><button onclick="gotoPage('about')">About</button></li>
+          <li><button onclick="gotoPage('capabilities')">Capabilities</button></li>
+          <li><button onclick="gotoPage('contact')">Contact</button></li>
+        </ul>
+      </div>
+      <div>
+        <h6>Contact</h6>
+        <ul>
+          <li>sales@sagatele.com</li>
+          <li>sagatele.com</li>
+          <li>Shenzhen, China</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Saga Telecom. All rights reserved.</span>
+      <span>CE &middot; FCC &middot; RoHS &middot; REACH &middot; UKCA &nbsp;&middot;&nbsp; MARVELL AND PRESTERA ARE TRADEMARKS OF MARVELL TECHNOLOGY, INC. &middot; CENTEC IS A TRADEMARK OF CENTEC COMMUNICATIONS.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function gotoPage(pageId){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  document.querySelectorAll('.navlink').forEach(n => n.classList.remove('current'));
+  var navBtn = document.querySelector('.navlink[data-page="' + pageId + '"]');
+  if(navBtn) navBtn.classList.add('current');
+  window.scrollTo(0,0);
+}
+gotoPage('home');
+</script>
+
+</body>
+</html>
