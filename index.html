@@ -88,7 +88,8 @@
 
   /* PAGE SWITCHING */
   .page{display:none;}
-  .page.active{display:block;}
+  .page.active{display:block; animation:pageIn .22s ease both;}
+  @keyframes pageIn{from{opacity:0; transform:translateY(6px);}to{opacity:1; transform:translateY(0);}}
 
   /* ============ TOP STRIP ============ */
   .topstrip{
@@ -285,7 +286,7 @@
     .hero{padding:48px 0 40px;}
   }
   a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;} .page.active{animation:none;}}
 
   /* ============ WHATSAPP FLOAT ============ */
   .wa-float{
@@ -331,6 +332,7 @@
         <li><button class="navlink current" data-page="home" onclick="gotoPage('home')">Home</button></li>
         <li><button class="navlink" data-page="about" onclick="gotoPage('about')">About</button></li>
         <li><button class="navlink" data-page="capabilities" onclick="gotoPage('capabilities')">Capabilities</button></li>
+        <li><button class="navlink" data-page="insights" onclick="gotoPage('insights')">Insights</button></li>
         <li><button class="navlink" data-page="contact" onclick="gotoPage('contact')">Contact</button></li>
       </ul>
     </nav>
@@ -606,8 +608,8 @@
             <li>Rail / transit certified switches (EN50155 etc.)</li>
             <li>IP67 ruggedized enclosures</li>
             <li>Consumer / home routers</li>
-            <li>UL certification (available on request for specific projects)</li>
-            <li>Country-specific mandatory certifications as standard (available on request, KC, etc.)</li>
+            <li>UL certification — not stocked as standard; available on request for qualified projects</li>
+            <li>Country-specific mandatory certifications (KC, etc.) — not standard; available on request</li>
           </ul>
         </div>
       </div>
@@ -655,6 +657,8 @@
             <li>802.1X + RADIUS + TACACS+ &middot; DAI &middot; IP Source Guard &middot; DDoS protection</li>
             <li>SFTP / SCP / SSH2 (public key) &middot; HTTPS &middot; SNMP v2c/v3 &middot; sFlow &middot; MQTT telemetry</li>
             <li>Dual firmware partition &middot; optical DDM monitoring &middot; one-click fault collection</li>
+            <li>Fiber Bypass — LC female connector, 2ch single LC or 1ch dual LC, optical switching ≤10ms, insertion loss 1.2dB max</li>
+            <li>DI / DO / RS485 — 1ch digital input (12–30V), 1ch digital output (2A@30V DC), 1ch RS485 with Modbus transparent transmission, TCP client/server mode</li>
             <li>Firmware actively developed — V7.5.x roadmap, continuous feature optimization</li>
           </ul>
         </div>
@@ -663,15 +667,19 @@
           <h4>CENTEC</h4>
           <div class="cc-sub">L3 Aggregation &middot; Core &middot; Data Center — 10G to 800G</div>
           <ul>
-            <li>Full L3 hardware-forwarded routing — OSPF, BGP, static routing</li>
-            <li>VXLAN overlay networking — data center fabric support</li>
-            <li>MPLS — label switching and traffic engineering</li>
-            <li>MLAG — two-active stacking, cross-chassis link aggregation</li>
-            <li>ACL &middot; QoS &middot; LACP hardware offload at line rate</li>
+            <li>Full L3 hardware-forwarded routing — OSPF, BGP, IS-IS, static routing</li>
+            <li>IPv4/IPv6 dual-stack routing — OSPFv3, BGP4+</li>
+            <li>EVPN-VXLAN fabric — scalable data center overlay networking</li>
+            <li>MPLS / MPLS VPN — L2VPN, L3VPN and metro transport applications</li>
+            <li>MLAG — dual-active redundancy and cross-chassis link aggregation</li>
+            <li>Stacking — virtualized device management for simplified aggregation</li>
+            <li>ECMP load balancing &middot; ACL &middot; QoS &middot; LACP hardware offload at line rate</li>
             <li>Port speeds: 10G SFP+ &middot; 25G SFP28 &middot; 40G QSFP+ &middot; 100G QSFP28 &middot; 400G QSFP112 &middot; 800G OSFP</li>
-            <li>Redundant power (CRPS) &middot; hot-swap smart fan modules</li>
+            <li>Data Center Bridging (DCB) — PFC and DCBX support</li>
+            <li>Redundant hot-swappable power supplies (CRPS) &middot; intelligent hot-swap fan modules</li>
             <li>Suitable for enterprise aggregation, campus core, MAN, and data center ToR/spine</li>
             <li>Active platform development — strong R&amp;D continuity</li>
+            <li>Merchant silicon based architecture · flexible hardware platform for OEM/ODM customization</li>
           </ul>
         </div>
       </div>
@@ -695,7 +703,7 @@
         <!-- STI -->
         <div style="border-right:1.5px solid var(--ink);">
           <div style="width:100%; aspect-ratio:1/1; background:var(--paper-deep); overflow:hidden; border-bottom:1px solid var(--rule-light);">
-            <img src="sti-488xggpm2b-2bt-front.jpg" alt="STI-488XGGPM2B-2BT industrial L2+ managed PoE++ switch fiber bypass DIN-rail" style="width:100%; height:100%; object-fit:contain; padding:16px;">
+            <img src="sti-488xggpm2b-2bt-front.jpg" alt="STI-488XGGPM2B-2BT industrial L2+ managed PoE++ switch fiber bypass DIN-rail" loading="lazy" style="width:100%; height:100%; object-fit:contain; padding:16px;">
           </div>
           <div style="padding:20px 20px 24px;">
             <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:6px;">STI — Industrial Networking</div>
@@ -715,7 +723,7 @@
         <!-- STC -->
         <div style="border-right:1.5px solid var(--ink);">
           <div style="width:100%; aspect-ratio:1/1; background:var(--paper-deep); overflow:hidden; border-bottom:1px solid var(--rule-light);">
-            <img src="stc-424xggpm-280w-front.jpg" alt="STC-424XGGPM-280W commercial L2+ managed PoE switch dual AC redundant power" style="width:100%; height:100%; object-fit:contain; padding:16px;">
+            <img src="stc-424xggpm-280w-front.jpg" alt="STC-424XGGPM-280W commercial L2+ managed PoE switch dual AC redundant power" loading="lazy" style="width:100%; height:100%; object-fit:contain; padding:16px;">
           </div>
           <div style="padding:20px 20px 24px;">
             <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:#1a3a5c; margin-bottom:6px;">STC — Commercial Ethernet</div>
@@ -735,7 +743,7 @@
         <!-- STH -->
         <div>
           <div style="width:100%; aspect-ratio:1/1; background:var(--paper-deep); overflow:hidden; border-bottom:1px solid var(--rule-light);">
-            <img src="sth-2c12xf12xe-hsi-front.jpg" alt="STH-2C12XF12XE-HSI half-width L3 managed switch 10G SFP+ Base-T 100G uplinks" style="width:100%; height:100%; object-fit:contain; padding:16px;">
+            <img src="sth-2c12xf12xe-hsi-front.jpg" alt="STH-2C12XF12XE-HSI half-width L3 managed switch 10G SFP+ Base-T 100G uplinks" loading="lazy" style="width:100%; height:100%; object-fit:contain; padding:16px;">
           </div>
           <div style="padding:20px 20px 24px;">
             <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:#3d2a5c; margin-bottom:6px;">STH — Core & Aggregation</div>
@@ -803,6 +811,110 @@
 </div>
 
 <!-- =========================================================
+     PAGE: INSIGHTS
+========================================================= -->
+<div class="page" id="page-insights">
+  <div class="breadcrumb"><div class="wrap"><button onclick="gotoPage('home')">Home</button> / Insights</div></div>
+
+  <section class="hero" style="padding:56px 0 48px;">
+    <div class="wrap">
+      <div class="hero-eyebrow">Insights</div>
+      <h2 style="font-size:40px; max-width:22ch;">Engineering perspectives on telecom procurement and supply chain.</h2>
+    </div>
+  </section>
+
+  <section class="section no-border">
+    <div class="wrap">
+      <div style="border:1.5px solid var(--ink);">
+
+        <!-- ARTICLE 1 -->
+        <div class="insight-row" id="ins-1">
+          <div class="insight-summary" onclick="toggleInsight(1)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+            <div>
+              <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">August 2026 &nbsp;&middot;&nbsp; Supply Chain</div>
+              <div style="font-size:17px; font-weight:700; line-height:1.3;">Why Strategic Inventory Matters in Telecom Procurement</div>
+            </div>
+            <div id="ins-arrow-1" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px; transition:transform .2s;">+</div>
+          </div>
+          <div id="ins-body-1" style="display:none; padding:32px 28px 36px; border-bottom:1px solid var(--rule-light); background:var(--paper-deep);">
+            <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:20px;">For most procurement teams, the evaluation ends at unit price and lead time. But in telecom hardware — especially at the access and aggregation layer — there's a third variable that rarely appears on the RFQ: supply continuity risk.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:20px;">Chipset allocation is not linear. Marvell and CENTEC silicon, like most semiconductors, moves in cycles. During tight allocation periods, factories that don't hold buffer stock simply can't ship — regardless of how good the unit price was when you signed the PO. The cost of a delayed network rollout, a stalled OEM product launch, or a missed project deadline dwarfs any savings made at the per-unit level.</p>
+            <div style="border-left:3px solid var(--accent); padding-left:20px; margin:24px 0; font-size:16px; font-style:italic; color:var(--ink); line-height:1.6;">Strategic inventory isn't speculative stockpiling. It's planned buffer stock held against specific chipsets, sized against client demand forecasts and the lifecycle position of each platform.</div>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:20px;">At Saga Telecom, we maintain buffer positions on key Marvell Prestera and CENTEC chipsets as a deliberate business decision — not as a side effect of over-ordering. This means predictable lead times for standard configurations, even during periods when the broader market is constrained.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:20px;">Total cost of ownership in networking hardware is rarely about the switch itself. It's about deployment friction, supply predictability, and the cost of exceptions. A vendor who quotes 10% lower but delivers 6 weeks late — or can't fulfill at all during a shortage — is not a lower-cost option. The math doesn't work.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7;">Before your next RFQ cycle, it's worth asking: does your supplier hold chipset-level buffer stock, or are they building to order against spot allocation? The answer tells you a lot about what happens when the market tightens — and it always tightens eventually.</p>
+          </div>
+        </div>
+
+        <!-- ARTICLE 2 -->
+        <div class="insight-row" id="ins-2">
+          <div class="insight-summary" onclick="toggleInsight(2)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+            <div>
+              <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">August 2026 &nbsp;&middot;&nbsp; Technology</div>
+              <div style="font-size:17px; font-weight:700; line-height:1.3;">Marvell vs. Generic Access Layer Switches — What Procurement Teams Miss</div>
+            </div>
+            <div id="ins-arrow-2" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
+          </div>
+          <div id="ins-body-2" style="display:none; padding:32px 28px 36px; border-bottom:1px solid var(--rule-light); background:var(--paper-deep);">
+            <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:20px;">Access layer switching is often treated as a commodity purchase. The logic is straightforward: a 24-port managed switch is a 24-port managed switch. Standardize on price, move on. This logic breaks down in practice — usually at the worst possible moment.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:20px;">Not all managed switches are built on the same silicon. The chipset underneath determines what the switch can actually do — not just today, but across its entire operational life. Generic and white-label switches frequently use silicon with limited feature roadmaps, minimal vendor support, and firmware that receives infrequent updates if any.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:20px;">Marvell Prestera-based switches operate differently. The platform has active R&amp;D investment behind it, a defined feature roadmap, and a support ecosystem that extends from the chip level through to firmware and management interfaces. When you deploy a Marvell-based switch, you're not buying a frozen feature set — you're buying into a platform that continues to develop.</p>
+            <div style="border-left:3px solid var(--accent); padding-left:20px; margin:24px 0; font-size:16px; font-style:italic; color:var(--ink); line-height:1.6;">Generic switches frequently support features on paper but implement them inconsistently — with firmware bugs that never get patched, or CLI behavior that doesn't match documentation.</div>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:20px;">For OEM and ODM buyers, the gap widens further. Generic silicon offers limited customization depth — surface-level rebranding at best. Marvell Prestera platforms support deep firmware customization: feature set activation, CLI behavior modification, SNMP and MIB configuration, and full management UI white-labeling.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7;">When evaluating access layer options, the right question isn't "what does this switch support?" It's "what does the chipset platform allow, and who is maintaining it?" The answer determines not just what you can deploy today, but what you can build on for the next five years.</p>
+          </div>
+        </div>
+
+        <!-- ARTICLE 3 -->
+        <div class="insight-row" id="ins-3">
+          <div class="insight-summary" onclick="toggleInsight(3)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+            <div>
+              <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">August 2026 &nbsp;&middot;&nbsp; Procurement</div>
+              <div style="font-size:17px; font-weight:700; line-height:1.3;">How to Evaluate a Managed Switch Supplier Beyond Unit Price</div>
+            </div>
+            <div id="ins-arrow-3" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
+          </div>
+          <div id="ins-body-3" style="display:none; padding:32px 28px 36px; border-bottom:1px solid var(--rule-light); background:var(--paper-deep);">
+            <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:20px;">The RFQ process optimizes for the wrong variable. Unit price is easy to compare — it fits neatly into a spreadsheet column, it responds to negotiation, and it produces a clear winner. The problem is that unit price is rarely where procurement decisions actually go wrong.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">The real cost shows up later: in delayed shipments when a supplier can't fulfill during a shortage, in deployment friction when firmware doesn't behave as documented, in re-qualification costs when a chipset platform reaches end-of-life. None of these costs appear on the original RFQ.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Supply chain depth is the first non-price variable that matters.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Ask your supplier directly: do you hold chipset-level buffer stock, or do you build to order against spot allocation? A supplier who can't answer this question clearly doesn't have a strategic inventory position.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Technical support quality is the second.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Platform-level support means someone who understands CLI behavior, MIB implementation, and firmware interaction with your specific topology. Product-level support means someone who reads the datasheet back to you. The difference becomes obvious the first time you hit an edge case in production.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Chipset continuity is the third.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:20px;">A supplier who carries products across multiple unrelated chipset platforms is optimizing for catalogue breadth, not technical depth. Ask which chipset families your supplier is committed to, and what their policy is on lifecycle management when a platform approaches EOL.</p>
+            <div style="border-left:3px solid var(--accent); padding-left:20px; margin:20px 0; font-size:16px; font-style:italic; color:var(--ink); line-height:1.6;">The quality of the answer to "what happens when allocation gets tight?" tells you more about a supplier than any price sheet.</div>
+          </div>
+        </div>
+
+        <!-- ARTICLE 4 -->
+        <div class="insight-row" id="ins-4">
+          <div class="insight-summary" onclick="toggleInsight(4)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer;">
+            <div>
+              <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">August 2026 &nbsp;&middot;&nbsp; OEM / ODM</div>
+              <div style="font-size:17px; font-weight:700; line-height:1.3;">OEM vs ODM vs SKD vs CKD — What the Differences Mean for Your Product Roadmap</div>
+            </div>
+            <div id="ins-arrow-4" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
+          </div>
+          <div id="ins-body-4" style="display:none; padding:32px 28px 36px; background:var(--paper-deep);">
+            <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:20px;">These four terms appear on supplier capability sheets constantly, and they're often used interchangeably in ways that obscure meaningful differences. For buyers planning a hardware product roadmap, the distinctions matter — they determine how much control you have, how much risk you carry, and what your unit economics look like.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">OEM — Original Equipment Manufacturing</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">You take an existing hardware design and apply your brand. Lowest friction to market, but your ability to differentiate on hardware is limited — your product looks like everyone else's under the skin.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">ODM — Original Design Manufacturing</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">The manufacturer builds to your specification. You own the design output. This gives you meaningful hardware differentiation — port configurations, form factors, and performance profiles that are yours rather than shared across multiple brands.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">SKD / CKD — Semi or Completely Knocked Down</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:20px;">Assembly models driven primarily by import duty optimization or local content requirements. SKD delivers major subassemblies; CKD delivers all components for full local assembly. Both require local assembly capability but can materially improve landed cost in the right market context.</p>
+            <div style="border-left:3px solid var(--accent); padding-left:20px; margin:20px 0; font-size:15px; font-style:italic; color:var(--ink); line-height:1.6;">Not all suppliers support all four models — and among those who do, capability depth varies significantly. Deep ODM means firmware and UI customization, not just PCB layout changes.</div>
+            <p style="font-size:14px; color:#444; line-height:1.7;">Most buyers start with OEM for speed to market and move toward ODM as volume and differentiation requirements grow. The question worth asking any supplier: how deep does the customization actually go?</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =========================================================
      PAGE: CONTACT
 ========================================================= -->
 <div class="page" id="page-contact">
@@ -811,7 +923,7 @@
   <section class="section no-border" style="padding-top:64px;">
     <div class="wrap contact-grid">
       <div>
-        <div class="section-tag">Get In Touch</div>
+        <div class="hero-eyebrow">Get In Touch</div>
         <h3 style="font-size:36px; font-weight:700; margin-bottom:20px; letter-spacing:-0.01em;">Talk to us about your project.</h3>
         <p class="lead-text" style="margin-bottom:28px;">We work directly with OEMs, system integrators, ISPs, and distributors. If you're evaluating a platform, planning a customization, or want to understand whether our supply chain model fits your procurement requirements — this is the right conversation to have early.</p>
 
@@ -862,6 +974,7 @@
           <li><button onclick="gotoPage('home')">Home</button></li>
           <li><button onclick="gotoPage('about')">About</button></li>
           <li><button onclick="gotoPage('capabilities')">Capabilities</button></li>
+          <li><button onclick="gotoPage('insights')">Insights</button></li>
           <li><button onclick="gotoPage('contact')">Contact</button></li>
         </ul>
       </div>
@@ -876,13 +989,13 @@
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Saga Telecom. All rights reserved. &nbsp;&middot;&nbsp; Last updated: August 2026</span>
-      <span>CE &middot; FCC &middot; RoHS &middot; REACH &middot; UKCA &nbsp;&middot;&nbsp; MARVELL AND PRESTERA ARE TRADEMARKS OF MARVELL TECHNOLOGY, INC. &middot; CENTEC IS A TRADEMARK OF CENTEC COMMUNICATIONS.</span>
+      <span>CE &middot; FCC &middot; RoHS &middot; REACH &middot; UKCA &nbsp;&middot;&nbsp; Marvell® and Prestera® are trademarks of Marvell Technology, Inc. &middot; CENTEC® is a trademark of CENTEC Communications.</span>
     </div>
   </div>
 </footer>
 
 <!-- WhatsApp Float Button -->
-<a class="wa-float" href="https://wa.me/8615237149683" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+<a class="wa-float" href="https://wa.me/8615237149683" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
@@ -890,6 +1003,17 @@
 <div class="wa-tooltip">WhatsApp us</div>
 
 <script>
+function toggleInsight(n){
+  var body = document.getElementById('ins-body-'+n);
+  var arrow = document.getElementById('ins-arrow-'+n);
+  if(body.style.display === 'none'){
+    body.style.display = 'block';
+    arrow.textContent = '−';
+  } else {
+    body.style.display = 'none';
+    arrow.textContent = '+';
+  }
+}
 function gotoPage(pageId){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + pageId).classList.add('active');
