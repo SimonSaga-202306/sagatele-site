@@ -57,7 +57,8 @@
     "availableLanguage": ["English"]
   },
   "sameAs": [
-    "https://sagatele.com"
+    "https://x.com/SagaSimon",
+    "https://www.reddit.com/user/Due_Helicopter8477/"
   ]
 }
 </script>
@@ -332,7 +333,7 @@
         <li><button class="navlink current" data-page="home" onclick="gotoPage('home')">Home</button></li>
         <li><button class="navlink" data-page="about" onclick="gotoPage('about')">About</button></li>
         <li><button class="navlink" data-page="capabilities" onclick="gotoPage('capabilities')">Capabilities</button></li>
-        <li><button class="navlink" data-page="insights" onclick="gotoPage('insights')">Insights</button></li>
+        <li><button class="navlink" data-page="resources" onclick="gotoPage('resources')">Resources</button></li>
         <li><button class="navlink" data-page="contact" onclick="gotoPage('contact')">Contact</button></li>
       </ul>
     </nav>
@@ -811,28 +812,36 @@
 </div>
 
 <!-- =========================================================
-     PAGE: INSIGHTS
+     PAGE: RESOURCES
 ========================================================= -->
-<div class="page" id="page-insights">
-  <div class="breadcrumb"><div class="wrap"><button onclick="gotoPage('home')">Home</button> / Insights</div></div>
+<div class="page" id="page-resources">
+  <div class="breadcrumb"><div class="wrap"><button onclick="gotoPage('home')">Home</button> / Resources</div></div>
 
   <section class="hero" style="padding:56px 0 48px;">
     <div class="wrap">
-      <div class="hero-eyebrow">Insights</div>
-      <h2 style="font-size:40px; max-width:22ch;">Engineering perspectives on telecom procurement and supply chain.</h2>
+      <div class="hero-eyebrow">Resources</div>
+      <h2 style="font-size:40px; max-width:24ch;">Engineering perspectives on telecom procurement, deployment, and supply chain.</h2>
     </div>
   </section>
 
   <section class="section no-border">
     <div class="wrap">
-      <div style="border:1.5px solid var(--ink);">
+      <div class="section-head" style="margin-bottom:24px;">
+          <div>
+            <div class="section-tag">Articles</div>
+            <h3 style="font-size:22px;">Thought leadership on procurement &amp; supply chain.</h3>
+          </div>
+          <p class="section-note">Written from the field, not the marketing desk.</p>
+        </div>
+        <div style="border:1.5px solid var(--ink);">
 
         <!-- ARTICLE 1 -->
         <div class="insight-row" id="ins-1">
-          <div class="insight-summary" onclick="toggleInsight(1)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+          <div class="insight-summary" id="ins-sum-1" role="button" aria-expanded="false" onclick="toggleInsight(1)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
             <div>
               <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">August 2026 &nbsp;&middot;&nbsp; Supply Chain</div>
               <div style="font-size:17px; font-weight:700; line-height:1.3;">Why Strategic Inventory Matters in Telecom Procurement</div>
+              <div style="margin-top:6px;"><a href="/insights/strategic-inventory-procurement.html" style="font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);" onclick="sagaTrack('standalone_click', {article: 'strategic-inventory-procurement'});">Standalone page &#8599;</a></div>
             </div>
             <div id="ins-arrow-1" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px; transition:transform .2s;">+</div>
           </div>
@@ -848,10 +857,11 @@
 
         <!-- ARTICLE 2 -->
         <div class="insight-row" id="ins-2">
-          <div class="insight-summary" onclick="toggleInsight(2)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+          <div class="insight-summary" id="ins-sum-2" role="button" aria-expanded="false" onclick="toggleInsight(2)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
             <div>
               <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">August 2026 &nbsp;&middot;&nbsp; Technology</div>
               <div style="font-size:17px; font-weight:700; line-height:1.3;">Marvell vs. Generic Access Layer Switches — What Procurement Teams Miss</div>
+              <div style="margin-top:6px;"><a href="/insights/marvell-vs-generic-switches.html" style="font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);" onclick="sagaTrack('standalone_click', {article: 'marvell-vs-generic-switches'});">Standalone page &#8599;</a></div>
             </div>
             <div id="ins-arrow-2" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
           </div>
@@ -867,10 +877,11 @@
 
         <!-- ARTICLE 3 -->
         <div class="insight-row" id="ins-3">
-          <div class="insight-summary" onclick="toggleInsight(3)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+          <div class="insight-summary" id="ins-sum-3" role="button" aria-expanded="false" onclick="toggleInsight(3)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
             <div>
               <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">August 2026 &nbsp;&middot;&nbsp; Procurement</div>
               <div style="font-size:17px; font-weight:700; line-height:1.3;">How to Evaluate a Managed Switch Supplier Beyond Unit Price</div>
+              <div style="margin-top:6px;"><a href="/insights/evaluate-switch-supplier.html" style="font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);" onclick="sagaTrack('standalone_click', {article: 'evaluate-switch-supplier'});">Standalone page &#8599;</a></div>
             </div>
             <div id="ins-arrow-3" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
           </div>
@@ -889,10 +900,11 @@
 
         <!-- ARTICLE 4 -->
         <div class="insight-row" id="ins-4">
-          <div class="insight-summary" onclick="toggleInsight(4)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer;">
+          <div class="insight-summary" id="ins-sum-4" role="button" aria-expanded="false" onclick="toggleInsight(4)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer;">
             <div>
               <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">August 2026 &nbsp;&middot;&nbsp; OEM / ODM</div>
               <div style="font-size:17px; font-weight:700; line-height:1.3;">OEM vs ODM vs SKD vs CKD — What the Differences Mean for Your Product Roadmap</div>
+              <div style="margin-top:6px;"><a href="/insights/oem-odm-skd-ckd.html" style="font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);" onclick="sagaTrack('standalone_click', {article: 'oem-odm-skd-ckd'});">Standalone page &#8599;</a></div>
             </div>
             <div id="ins-arrow-4" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
           </div>
@@ -908,7 +920,214 @@
             <p style="font-size:14px; color:#444; line-height:1.7;">Most buyers start with OEM for speed to market and move toward ODM as volume and differentiation requirements grow. The question worth asking any supplier: how deep does the customization actually go?</p>
           </div>
         </div>
+<!-- ARTICLE 5 -->
+        <div class="insight-row" id="ins-5">
+          <div class="insight-summary" id="ins-sum-5" role="button" aria-expanded="false" onclick="toggleInsight(5)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+            <div>
+              <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">September 2026 &nbsp;&middot;&nbsp; Technology</div>
+              <div style="font-size:17px; font-weight:700; line-height:1.3;">When to Choose Industrial vs. Commercial Ethernet Switches — A Deployment Decision Framework</div>
+              <div style="margin-top:6px;"><a href="/insights/industrial-vs-commercial-switch-selection.html" style="font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);" onclick="sagaTrack('standalone_click', {article: 'industrial-vs-commercial-switch-selection'});">Standalone page &#8599;</a></div>
+            </div>
+            <div id="ins-arrow-5" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
+          </div>
+          <div id="ins-body-5" style="display:none; padding:32px 28px 36px; border-bottom:1px solid var(--rule-light); background:var(--paper-deep);">
+            <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:20px;">The question comes up on almost every project that involves networking hardware outside a standard office or data center environment: does this deployment actually need industrial-grade switches, or will commercial-grade hardware do the job?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">The answer is not always obvious, and getting it wrong in either direction is expensive. Over-specifying adds cost without adding value. Under-specifying creates failures that are far more expensive to remediate than the equipment savings were worth.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:20px;">This framework covers the four variables that should drive the decision.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Operating temperature range</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Commercial Ethernet switches are typically rated for 0&deg;C to 50&deg;C — the standard range for climate-controlled environments. Industrial switches extend this to -40&deg;C to +75&deg;C, and some models go further.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">The practical question is not what temperature the environment averages, but what it reaches at extremes. Outdoor cabinets in northern climates can hit -30&deg;C in winter. Electrical substations and factory floors can exceed 60&deg;C in summer without dedicated cooling. A commercial switch operating outside its rated range will not fail immediately — it will fail unpredictably, often under load, often at the worst possible time.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">If your deployment includes outdoor enclosures, unheated industrial buildings, transportation infrastructure, or any environment without active climate control, the temperature specification is not optional.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Power supply architecture</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Commercial switches ship with a single internal power supply. Industrial switches offer dual redundant inputs — either dual DC or AC/DC combinations — with hot-swap capability on higher-end models.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">The relevant question here is what happens when power fails. For a commercial office deployment, a switch going down for 30 minutes while a PSU is replaced is an inconvenience. For a water treatment facility, a manufacturing line, a traffic management system, or a hospital network, the same 30 minutes has a real dollar or safety cost attached to it.</p>
+            <div style="border-left:3px solid var(--accent); padding-left:20px; margin:20px 0; font-size:16px; font-style:italic; color:var(--ink); line-height:1.6;">Dual PSU is not a luxury specification for these environments. It is the minimum viable reliability architecture.</div>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Installation form factor</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Commercial switches are rack-mount, designed for structured cabling rooms and data closets. Industrial switches are available in DIN-rail form factors, designed for mounting inside electrical panels and control cabinets where rack space doesn&rsquo;t exist.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">This is often the decision point that gets overlooked in the planning phase. A project that specifies commercial switches discovers midway through installation that the field cabinets have no rack space. DIN-rail mounting is not interchangeable with rack mounting — the enclosures, the cable management, and the power wiring are all different.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">If your network nodes live inside control panels, junction boxes, or roadside cabinets, the form factor decision is made for you.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">MTBF and certification requirements</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Industrial switches are designed and tested to higher MTBF targets — typically 200,000 hours or more versus 50,000–100,000 hours for commercial-grade hardware. They also carry certifications relevant to specific industrial environments: EMC immunity, surge protection ratings (typically 4KV–6KV), and in some cases certifications for rail, maritime, or hazardous location applications.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">For deployments in electrically noisy environments — near heavy motors, variable frequency drives, welding equipment, or high-voltage switching — the surge and EMC specifications matter. Commercial switches are not tested for these environments and will experience premature failures in them.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">The decision framework</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Use commercial-grade switching when: the deployment is inside a climate-controlled building, power redundancy is not a reliability requirement, rack mounting is available, and the electrical environment is clean.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Use industrial-grade switching when: any of the following apply — outdoor or uncontrolled temperature environment, power redundancy is required, DIN-rail installation is needed, or the electrical environment includes significant noise or surge risk.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7;">The mistake worth avoiding is making this decision on budget alone. The cost difference between commercial and industrial hardware at the switch level is typically 20–40%. The cost of a field failure — equipment replacement, site visit, downtime, and the downstream consequences — is almost always larger.</p>
+          </div>
+        </div>
 
+<!-- ARTICLE 6 -->
+        <div class="insight-row" id="ins-6">
+          <div class="insight-summary" id="ins-sum-6" role="button" aria-expanded="false" onclick="toggleInsight(6)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+            <div>
+              <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">September 2026 &nbsp;&middot;&nbsp; Technology</div>
+              <div style="font-size:17px; font-weight:700; line-height:1.3;">PoE Budget Planning: The Calculation Most Network Engineers Get Wrong</div>
+              <div style="margin-top:6px;"><a href="/insights/poe-budget-planning.html" style="font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);" onclick="sagaTrack('standalone_click', {article: 'poe-budget-planning'});">Standalone page &#8599;</a></div>
+            </div>
+            <div id="ins-arrow-6" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
+          </div>
+          <div id="ins-body-6" style="display:none; padding:32px 28px 36px; border-bottom:1px solid var(--rule-light); background:var(--paper-deep);">
+            <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:20px;">PoE switches are sold with a total power budget number: 370W, 520W, 740W. Most deployments treat this number as the limit they&rsquo;re working within. The problem is that the nameplate budget and the power actually available to connected devices are not the same number — and the gap is large enough to cause deployment failures.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Where the power goes</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">A PoE switch draws power from its power supply and uses it for two things: running the switch itself, and delivering power to connected PDs (powered devices). The switch&rsquo;s own consumption — processors, memory, fans, uplink ports — comes out of the power supply budget before any PoE delivery happens.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">A 370W switch might consume 30–50W for its own operation, leaving 320–340W for PoE delivery. This is not hidden information, but it is frequently not factored into deployment calculations that simply divide the nameplate budget by the number of ports.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Per-port maximums and how they interact</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">IEEE 802.3af delivers up to 15.4W per port. 802.3at delivers up to 30W. 802.3bt delivers up to 90W. These are the standards, but the actual power delivered to a device — the power at the PD, not at the PSE — is lower after cable loss. A device rated for 25.5W consumption may require 30W from the switch port to actually receive 25.5W after the cable.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">This means sizing based on device consumption ratings rather than port delivery maximums will produce an undersized budget.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">The calculation that fails</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">The common approach: take the number of cameras (or APs, or VoIP phones), multiply by their rated power consumption, check that it&rsquo;s under the switch budget. This fails because: it uses device consumption rather than port delivery requirements. It doesn&rsquo;t account for switch self-consumption. It assumes all ports will never simultaneously draw maximum power — which is fine for diverse mixed deployments but wrong for uniform high-power deployments. And it doesn&rsquo;t include headroom for power spikes during device startup, which can be 20–30% above steady-state draw.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">The calculation that works</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Start with the switch&rsquo;s actual PoE delivery capacity — typically 85–90% of nameplate budget after self-consumption. For each port, use the IEEE maximum for that port&rsquo;s standard, not the device&rsquo;s rated consumption. Sum the per-port maximums for all ports you intend to actively use. Add 20% headroom for startup peaks and future capacity. If the result exceeds the switch&rsquo;s PoE delivery capacity, the switch is undersized for this deployment.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">For a 48-port deployment with 802.3at cameras averaging 15W consumption: the correct sizing assumes 30W per port delivery requirement, 48 ports &times; 30W = 1440W delivery requirement. A 740W switch delivers approximately 650–680W after self-consumption. This deployment needs either two switches or a higher-budget single switch — not a 740W unit.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">The budget number to ask for</p>
+            <div style="border-left:3px solid var(--accent); padding-left:20px; margin:20px 0; font-size:16px; font-style:italic; color:var(--ink); line-height:1.6;">When evaluating switches, ask for the PoE delivery budget, not the total power budget.</div>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">These are different numbers, and suppliers who can&rsquo;t distinguish between them are not the right partners for a deployment where PoE reliability matters.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7;">The calculation is not complicated. The failure mode is treating it as simpler than it is.</p>
+          </div>
+        </div>
+
+      <!-- ARTICLE 7 -->
+        <div class="insight-row" id="ins-7">
+          <div class="insight-summary" id="ins-sum-7" role="button" aria-expanded="false" onclick="toggleInsight(7)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+            <div>
+              <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">October 2026 &nbsp;&middot;&nbsp; Supply Chain</div>
+              <div style="font-size:17px; font-weight:700; line-height:1.3;">What Happens to Your Project When Chipset Allocation Tightens — A Real Scenario</div>
+              <div style="margin-top:6px;"><a href="/insights/chipset-allocation-tightens.html" style="font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);" onclick="sagaTrack('standalone_click', {article: 'chipset-allocation-tightens'});">Standalone page &#8599;</a></div>
+            </div>
+            <div id="ins-arrow-7" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
+          </div>
+          <div id="ins-body-7" style="display:none; padding:32px 28px 36px; border-bottom:1px solid var(--rule-light); background:var(--paper-deep);">
+            <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:20px;">This is not a theoretical risk. It has happened repeatedly — in 2020, 2021, 2022, and in smaller cycles since. The pattern is consistent enough that it is worth walking through what actually occurs at the project level when chipset allocation tightens, so that procurement teams can assess their own exposure before the next cycle hits.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">The scenario</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">A system integrator wins a contract to deploy 200 access-layer switches across a campus network expansion. The project timeline is 14 weeks from PO to final acceptance. The switches are specified, the vendor is selected, the price is agreed. The order is placed.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Six weeks later, the vendor&rsquo;s factory informs them that the Ethernet switch chipset they use — the same chipset that has been available with 4-week lead times for the past two years — is now on allocation. Allocation means the chipset manufacturer has capped how many units each customer can receive per quarter. The vendor&rsquo;s allocation is enough to cover roughly 40% of the order.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">The vendor has three options: ship partial, source alternative chipsets, or delay. Partial shipment pushes the project into a staged deployment the customer didn&rsquo;t plan for. Alternative chipsets mean different firmware, different CLI behavior, potentially different feature sets — a re-qualification process that takes weeks the project doesn&rsquo;t have. Delay means the contractor misses the acceptance deadline.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Where the failure actually occurs</p>
+            <div style="border-left:3px solid var(--accent); padding-left:20px; margin:20px 0; font-size:16px; font-style:italic; color:var(--ink); line-height:1.6;">The failure is not the shortage itself. The failure is the assumption that current lead times represent structural availability.</div>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Semiconductor cycles are predictable at the macro level even when the timing is uncertain.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Suppliers who build to order against spot chipset allocation — placing their component orders only after customer POs are received — have zero buffer between market tightness and delivery failure. When allocation caps hit, these suppliers have no inventory to draw from. Every project in their queue is affected simultaneously.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">What buffer stock actually means in practice</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">A supplier who holds strategic chipset inventory has pre-purchased components against demand forecasts. When allocation tightens, they are drawing from stock they already own rather than competing for new allocation on a constrained market.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">This does not make them immune to extended shortages. But it means the gap between &ldquo;allocation tightens&rdquo; and &ldquo;delivery failure&rdquo; is measured in months rather than days. For a 14-week project, the difference between a supplier with 10 weeks of buffer stock and one with zero buffer stock is the difference between delivery and failure.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">The question to add to supplier qualification</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Before the next project, ask your switch supplier directly: what is your current chipset inventory position for the models I&rsquo;m specifying? How many units do you have on hand today, and how many weeks of demand does that represent at your current run rate?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">A supplier who can answer this question specifically — with numbers — has a strategic inventory position. A supplier who responds with lead time estimates and assurances about their &ldquo;strong supplier relationships&rdquo; does not.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7;">The answer to this question is more predictive of project delivery reliability than any other variable in the vendor selection process.</p>
+          </div>
+        </div>
+
+<!-- ARTICLE 8 -->
+        <div class="insight-row" id="ins-8">
+          <div class="insight-summary" id="ins-sum-8" role="button" aria-expanded="false" onclick="toggleInsight(8)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer; border-bottom:1px solid var(--rule-light);">
+            <div>
+              <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">October 2026 &nbsp;&middot;&nbsp; OEM / ODM</div>
+              <div style="font-size:17px; font-weight:700; line-height:1.3;">Five Questions to Ask Before Signing an OEM Switch Agreement</div>
+              <div style="margin-top:6px;"><a href="/insights/five-questions-oem-agreement.html" style="font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);" onclick="sagaTrack('standalone_click', {article: 'five-questions-oem-agreement'});">Standalone page &#8599;</a></div>
+            </div>
+            <div id="ins-arrow-8" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
+          </div>
+          <div id="ins-body-8" style="display:none; padding:32px 28px 36px; border-bottom:1px solid var(--rule-light); background:var(--paper-deep);">
+            <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:20px;">OEM switch agreements are not all equivalent. The contract terms, the supplier relationship, and the technical depth behind the customization capability vary enormously between suppliers who describe themselves using the same language. These five questions separate suppliers who can actually deliver on OEM commitments from those who are rebranding catalogue products with a label change and calling it OEM.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">1. Who owns the firmware roadmap, and what is your update cadence?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">This is the most consequential question for long-cycle OEM products. If you are building a product line that will be in market for three to five years, the firmware it ships with at launch will need to be updated — for bug fixes, security patches, feature additions, and compatibility with evolving network environments.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Ask specifically: does the supplier maintain their own firmware development capability, or are they dependent on the chipset manufacturer&rsquo;s reference firmware? What is the release cadence for firmware updates? What is the process for requesting firmware changes specific to your product?</p>
+            <div style="border-left:3px solid var(--accent); padding-left:20px; margin:20px 0; font-size:16px; font-style:italic; color:var(--ink); line-height:1.6;">A supplier who cannot answer these questions is not an OEM partner — they are a product reseller with your logo on it.</div>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">2. What is your EOL (end-of-life) policy for chipsets and products?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Chipset platforms have defined lifecycles. When the underlying silicon reaches end-of-life, the supplier must either migrate to a new platform or stop production. For OEM buyers, a chipset EOL event can force a complete product re-spin, including regulatory re-certification, firmware re-qualification, and supply chain transition.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Ask for the supplier&rsquo;s policy in writing: how far in advance will you notify us of chipset EOL? What migration path will you support? Will you maintain production capability for existing designs for a defined period after EOL announcement?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">A supplier who has never thought about this question cannot be relied upon for long-cycle product programs.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">3. How deep does firmware customization actually go?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">OEM firmware customization ranges from changing the login banner to rewriting the management interface, modifying CLI command structure, activating or deactivating feature sets, and altering MIB definitions. These are not equivalent capabilities.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Ask for specific examples: can you change the CLI prompt and command set? Can you disable features that should not be accessible to end users? Can you modify the SNMP MIB to expose custom OIDs? Can you change the web management interface beyond branding?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Request a demonstration on a reference platform. The answer to &ldquo;yes, we support firmware customization&rdquo; should include a list of specific things that have been done for other customers, not a general capability statement.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">4. What is your chipset inventory position, and how do you protect long-term supply?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">OEM programs typically involve volume commitments over multi-year periods. A supplier who cannot guarantee component availability across the program duration is transferring supply chain risk onto you — the OEM buyer — without disclosing it.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Ask: do you hold strategic buffer stock on the chipsets used in my product? What is your current inventory position? What happens to my production schedule if chipset allocation tightens? Do you have a secondary source for critical components?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">The difference between a supplier with strategic inventory and one without it becomes visible the first time a shortage hits. By then, it is too late to change suppliers without a gap in your production.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">5. What does your QC process look like before units ship?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">OEM products carry your brand. Field failures are your warranty exposure and your customer relationship problem, regardless of which factory produced the hardware. Understanding the supplier&rsquo;s quality control process before you sign is not optional.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Ask for the QC checklist: what tests does every unit go through before it leaves the factory? Is there incoming inspection of chipsets and key components? What is the failure rate at final test? What happens to units that fail — are they repaired and retested, or scrapped?</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">A supplier who cannot produce a written QC procedure does not have one. A supplier who has never been asked this question by a customer is not an OEM supplier in any meaningful sense of the term.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Using these questions</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">The value of asking these questions is not primarily in the answers — it is in the quality of how the supplier engages with them. A supplier who has a strategic inventory position, a firmware roadmap, and a written QC process will answer these questions specifically and confidently. A supplier who is operating as a product reseller will deflect, generalize, and change the subject.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7;">The questions are a filter, not a checklist. Use them accordingly.</p>
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- CASE STUDIES -->
+      <div style="margin-top:56px;">
+        <div class="section-head" style="margin-bottom:24px;">
+          <div>
+            <div class="section-tag">Case Studies</div>
+            <h3 style="font-size:22px;">Deployment references, not brochures.</h3>
+          </div>
+          <p class="section-note" style="white-space:nowrap; max-width:none;">How our delivery model performs on real project requirements.</p>
+        </div>
+        <div style="border:1.5px solid var(--ink);">
+<!-- CASE STUDY 1 -->
+        <div class="insight-row" id="ins-101">
+          <div class="insight-summary" id="ins-sum-101" role="button" aria-expanded="false" onclick="toggleInsight(101)" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; cursor:pointer;">
+            <div>
+              <div style="font-family:var(--mono); font-size:10px; color:#999; letter-spacing:0.06em; margin-bottom:6px;">September 2026 &nbsp;&middot;&nbsp; Case Study — Public Safety, Europe</div>
+              <div style="font-size:17px; font-weight:700; line-height:1.3;">Solution-in-a-Box: Pre-Configured Switching for a Surveillance Network</div>
+              <div style="margin-top:6px;"><a href="/insights/public-safety-deployment-case.html" style="font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);" onclick="sagaTrack('standalone_click', {article: 'public-safety-deployment-case'});">Standalone page &#8599;</a></div>
+            </div>
+            <div id="ins-arrow-101" style="font-family:var(--mono); font-size:18px; color:var(--accent); flex-shrink:0; margin-left:24px;">+</div>
+          </div>
+          <div id="ins-body-101" style="display:none; padding:32px 28px 36px; background:var(--paper-deep);">
+            <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:20px;">A European system integrator deploying a national public-safety surveillance network needed field sites brought online by electrical contractors — with no network engineers on site. Standard component supply wasn&rsquo;t an option: on distributed sites, a configuration error means a revisit, a schedule slip, and a security gap.</p>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">What was delivered</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Twelve pre-engineered sites, delivered as ready-to-run units: 10 roadside cabinets (8-port industrial PoE+ switches in an ERPS G.8032 ring) and 2 aggregation sites (24-port PoE with 10G SFP+ uplinks). Every switch arrived with SFP modules installed, power pre-wired, patch cords cut to length and labeled per port, and a one-page start-up card — an installer wires by label, powers on, and walks away.</p>
+            <div style="border:1px solid var(--rule-light); margin:20px 0; padding:4px 0;">
+              <div class="spec-line"><dt style="color:#555;">Sites</dt><dd style="font-family:var(--mono); font-weight:bold; text-align:right;">12 &mdash; 10 roadside + 2 aggregation</dd></div>
+              <div class="spec-line"><dt style="color:#555;">Cameras Powered</dt><dd style="font-family:var(--mono); font-weight:bold; text-align:right;">64 fixed + PTZ &middot; PoE / PoE+</dd></div>
+              <div class="spec-line"><dt style="color:#555;">Ring Protection</dt><dd style="font-family:var(--mono); font-weight:bold; text-align:right;">ERPS G.8032 &lt; 20 ms</dd></div>
+              <div class="spec-line"><dt style="color:#555;">Delivery</dt><dd style="font-family:var(--mono); font-weight:bold; text-align:right;">2 batches &middot; within 3 weeks</dd></div>
+            </div>
+            <p style="font-size:14px; color:#666; font-weight:700; margin-bottom:8px;">Why it mattered</p>
+            <p style="font-size:14px; color:#444; line-height:1.7; margin-bottom:16px;">Commissioning produced zero configuration-related revisits. For project buyers, this is where total deployment cost actually moves: hardware is only half of what we ship — configuration, testing, labeling, and documentation are the other half.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7;">Deployment scale and configuration shared with the client&#39;s permission; end-client identity withheld by mutual agreement.</p>
+            <p style="font-size:14px; color:#444; line-height:1.7;">Full engineering documentation of this deployment model is available on request.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <!-- DOWNLOADS -->
+      <div style="margin-top:56px;">
+        <div class="section-head" style="margin-bottom:24px;">
+          <div>
+            <div class="section-tag">Downloads</div>
+            <h3 style="font-size:22px;">The reference library.</h3>
+          </div>
+          <a href="https://drive.google.com/drive/folders/1YyJDq-YRG680Z7_HhzCQo_X8GwOM0Ijp?usp=sharing" target="_blank" rel="noopener noreferrer" onclick="sagaTrack('downloads_click');" style="font-family:var(--mono); font-size:13px; letter-spacing:0.04em; text-decoration:none; display:inline-block; border:1.5px solid var(--ink); background:var(--paper-deep); color:var(--ink); padding:11px 18px;">Open Google Drive &#8599;</a>
+        </div>
+        <div style="border:1.5px solid var(--ink);">
+          <div style="padding:20px 28px; border-bottom:1px solid var(--rule-light); display:flex; justify-content:space-between; gap:24px;">
+            <div>
+              <div style="font-size:15px; font-weight:700;">Saga Software Feature List — V2.4 (EN)</div>
+              <div style="font-size:13px; color:#555; margin-top:5px; line-height:1.55;">Complete software feature reference for our managed switching platform — switching, security, OAM, and management capabilities.</div>
+            </div>
+            <div style="font-family:var(--mono); font-size:10px; color:#999; white-space:nowrap; padding-top:3px;">PDF</div>
+          </div>
+          <div style="padding:20px 28px; display:flex; justify-content:space-between; gap:24px;">
+            <div>
+              <div style="font-size:15px; font-weight:700;">L2+ Feature Matrix — Firmware 7.5.x</div>
+              <div style="font-size:13px; color:#555; margin-top:5px; line-height:1.55;">Per-feature support matrix across the Marvell-based access-layer portfolio: ports, aggregation, multicast, ring protection, security, management.</div>
+            </div>
+            <div style="font-family:var(--mono); font-size:10px; color:#999; white-space:nowrap; padding-top:3px;">XLSX</div>
+          </div>
+          <div style="padding:20px 28px; border-top:1px solid var(--rule-light); display:flex; justify-content:space-between; gap:24px;">
+            <div>
+              <div style="font-size:15px; font-weight:700;">Product Roadmap — Access to Core</div>
+              <div style="font-size:13px; color:#555; margin-top:5px; line-height:1.55;">Where the platform is heading: managed switching from access PoE to 10G–400G aggregation and core, on a consistent chipset architecture — one scalable path, not isolated SKUs.</div>
+            </div>
+            <div style="font-family:var(--mono); font-size:10px; color:#999; white-space:nowrap; padding-top:3px;">PDF + PNG</div>
+          </div>
+        </div>
+        <p style="margin-top:12px; font-family:var(--mono); font-size:11px; color:#888;">Neutral, shareable documents — hosted openly on Google Drive. The library grows with each release.</p>
       </div>
     </div>
   </section>
@@ -942,7 +1161,7 @@
           <div class="panel-label">Saga Telecom — Contact</div>
           <dl>
             <div class="spec-line"><dt>Website</dt><dd>sagatele.com</dd></div>
-            <div class="spec-line"><dt>Email</dt><dd><a href="mailto:a.sagatelecom@gmail.com" style="color:inherit;">a.sagatelecom@gmail.com</a></dd></div>
+            <div class="spec-line"><dt>Email</dt><dd><a href="mailto:a.sagatelecom@gmail.com" style="color:inherit;" onclick="sagaTrack('contact_email');">a.sagatelecom@gmail.com</a></dd></div>
             <div class="spec-line"><dt>Location</dt><dd>Shenzhen, China</dd></div>
             <div class="spec-line"><dt>Response</dt><dd>Within 1 business day</dd></div>
           </dl>
@@ -974,28 +1193,28 @@
           <li><button onclick="gotoPage('home')">Home</button></li>
           <li><button onclick="gotoPage('about')">About</button></li>
           <li><button onclick="gotoPage('capabilities')">Capabilities</button></li>
-          <li><button onclick="gotoPage('insights')">Insights</button></li>
+          <li><button onclick="gotoPage('resources')">Resources</button></li>
           <li><button onclick="gotoPage('contact')">Contact</button></li>
         </ul>
       </div>
       <div>
         <h6>Contact</h6>
         <ul>
-          <li><a href="mailto:a.sagatelecom@gmail.com" style="color:inherit; opacity:0.85;">a.sagatelecom@gmail.com</a></li>
+          <li><a href="mailto:a.sagatelecom@gmail.com" style="color:inherit; opacity:0.85;" onclick="sagaTrack('contact_email');">a.sagatelecom@gmail.com</a></li>
           <li>sagatele.com</li>
           <li>Shenzhen, China</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Saga Telecom. All rights reserved. &nbsp;&middot;&nbsp; Last updated: August 2026</span>
+      <span>&copy; 2026 Saga Telecom. All rights reserved. &nbsp;&middot;&nbsp; Last updated: October 2026</span>
       <span>CE &middot; FCC &middot; RoHS &middot; REACH &middot; UKCA &nbsp;&middot;&nbsp; Marvell® and Prestera® are trademarks of Marvell Technology, Inc. &middot; CENTEC® is a trademark of CENTEC Communications.</span>
     </div>
   </div>
 </footer>
 
 <!-- WhatsApp Float Button -->
-<a class="wa-float" href="https://wa.me/8615237149683" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
+<a class="wa-float" href="https://wa.me/8615237149683" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" onclick="sagaTrack('contact_whatsapp');">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
@@ -1003,26 +1222,71 @@
 <div class="wa-tooltip">WhatsApp us</div>
 
 <script>
+/* ============ GA4 tracking helper ============ */
+function sagaTrack(name, params){
+  if(typeof gtag === 'function'){
+    try{ gtag('event', name, params || {}); }catch(e){}
+  }
+}
+function sagaArticleTitle(n){
+  var t = document.querySelector('#ins-' + n + ' .insight-summary > div > div:nth-child(2)');
+  return t ? t.textContent : ('Article ' + n);
+}
+
+/* ============ Articles & case accordion ============ */
 function toggleInsight(n){
   var body = document.getElementById('ins-body-'+n);
   var arrow = document.getElementById('ins-arrow-'+n);
+  var sum = document.getElementById('ins-sum-'+n);
   if(body.style.display === 'none'){
     body.style.display = 'block';
     arrow.textContent = '−';
+    if(sum) sum.setAttribute('aria-expanded', 'true');
+    sagaTrack('article_open', {article_title: sagaArticleTitle(n)});
   } else {
     body.style.display = 'none';
     arrow.textContent = '+';
+    if(sum) sum.setAttribute('aria-expanded', 'false');
   }
 }
+
+/* ============ Page switching + hash routing ============ */
+var SAGA_TITLES = {home:'Home', about:'About', capabilities:'Capabilities', resources:'Resources', contact:'Contact'};
 function gotoPage(pageId){
+  var target = document.getElementById('page-' + pageId);
+  if(!target) return;
+  var changed = !target.classList.contains('active');
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + pageId).classList.add('active');
-  document.querySelectorAll('.navlink').forEach(n => n.classList.remove('current'));
+  target.classList.add('active');
+  document.querySelectorAll('.navlink').forEach(n => { n.classList.remove('current'); n.removeAttribute('aria-current'); });
   var navBtn = document.querySelector('.navlink[data-page="' + pageId + '"]');
-  if(navBtn) navBtn.classList.add('current');
+  if(navBtn){ navBtn.classList.add('current'); navBtn.setAttribute('aria-current', 'page'); }
+  document.title = (pageId === 'home') ? 'Saga Telecom | Engineering & Supply-Chain-First' : (SAGA_TITLES[pageId] || pageId) + ' — Saga Telecom';
+  var h = location.hash;
+  var samePage = (h === '#/' + pageId) || (h.indexOf('#/' + pageId + '/') === 0);
+  var keepClean = (pageId === 'home' && h === '');
+  if(!samePage && !keepClean){
+    location.hash = '/' + pageId;
+  }
+  if(changed){
+    sagaTrack('page_view', {page_path: (pageId === 'home' ? '/' : '/' + pageId), page_title: (SAGA_TITLES[pageId] || pageId) + ' — Saga Telecom'});
+  }
   window.scrollTo(0,0);
 }
-gotoPage('home');
+function routeFromHash(){
+  var m = (location.hash || '').match(/^#\/([a-z-]+)(?:\/(\d+))?/i);
+  if(!m || !document.getElementById('page-' + m[1])){ gotoPage('home'); return; }
+  var page = m[1], art = m[2] ? parseInt(m[2], 10) : null;
+  gotoPage(page);
+  if(page === 'resources' && art){
+    var body = document.getElementById('ins-body-' + art);
+    if(body && body.style.display === 'none') toggleInsight(art);
+    var row = document.getElementById('ins-' + art);
+    if(row) setTimeout(function(){ row.scrollIntoView({behavior:'smooth', block:'start'}); }, 80);
+  }
+}
+window.addEventListener('hashchange', routeFromHash);
+routeFromHash();
 </script>
 
 </body>
