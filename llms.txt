@@ -56,3 +56,7 @@
 - https://sagatele.com/insights/chipset-allocation-tightens.html
 - https://sagatele.com/insights/five-questions-oem-agreement.html
 - https://sagatele.com/insights/public-safety-deployment-case.html
+- [Keep the Router. Reassess the Switch: A MikroTik Network Design Note](https://sagatele.com/insights/keep-router-reassess-switch.html) — October 2026, Technology
+- [How to Compare a Marvell-Based Switch with a MikroTik Model](https://sagatele.com/insights/compare-marvell-mikrotik-switches.html) — October 2026, Technology
+- [Keep the Router. Reassess the Switch: A MikroTik Network Design Note](https://sagatele.com/insights/keep-router-reassess-switch.html) — October 2026, Technology
+- [How to Compare a Marvell-Based Switch with a MikroTik Model](https://sagatele.com/insights/compare-marvell-mikrotik-switches.html) — October 2026, Technology
